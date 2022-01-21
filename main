@@ -1,1 +1,53 @@
+local Main = Instance.new("ScreenGui")
+local text = Instance.new("TextLabel")
+local logo = Instance.new("ImageLabel")
+local UICorner = Instance.new("UICorner")
 
+Main.Name = "Main"
+Main.Parent = game.CoreGui
+
+text.Name = "text"
+text.Parent = Main
+text.BackgroundColor3 = Color3.new(1, 1, 1)
+text.BackgroundTransparency = 1
+text.Position = UDim2.new(0.434270769, 0, 0.468711644, 0)
+text.Size = UDim2.new(0.130804449, 0, 0.0282208584, 0)
+text.Font = Enum.Font.GothamBlack
+text.Text = "Ethereal"
+text.TextColor3 = Color3.new(1, 1, 1)
+text.TextScaled = true
+text.TextSize = 14
+text.TextTransparency = 1
+text.TextWrapped = true
+
+logo.Name = "logo"
+logo.Parent = Main
+logo.BackgroundColor3 = Color3.new(1, 1, 1)
+logo.BackgroundTransparency = 1
+logo.Position = UDim2.new(0.491824716, 0, 0.449079782, 0)
+logo.Size = UDim2.new(0.0155886244, 0, 0.0282208584, 0)
+logo.Image = "rbxassetid://7103323192"
+logo.ImageTransparency = 1
+
+UICorner.Parent = logo
+
+local function XXKBIYV_fake_script() -- Main.LocalScript 
+	local script = Instance.new('LocalScript', Main)
+
+	function tween(part,info,stuff)
+		game:GetService('TweenService'):Create(part,info,stuff):Play();
+	end
+	
+	local blur = Instance.new('BlurEffect',game:GetService('Lighting'))
+	blur.Size=0
+	tween(blur,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Size=10})
+	tween(script.Parent.logo,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {ImageTransparency=0})
+	tween(script.Parent.text,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Position=UDim2.new(0.434, 0,0.486, 0),TextStrokeTransparency=0,TextTransparency=0})
+	wait(2)
+	tween(blur,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Size=0})
+	tween(script.Parent.logo,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {ImageTransparency=1})
+	tween(script.Parent.text,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Position=UDim2.new(0.434, 0,0.469, 0),TextStrokeTransparency=1,TextTransparency=1})
+	wait(1.26)
+	blur:Remove()
+end
+coroutine.wrap(XXKBIYV_fake_script)()
