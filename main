@@ -38,6 +38,17 @@ local function XXKBIYV_fake_script() -- Main.LocalScript
 		game:GetService('TweenService'):Create(part,info,stuff):Play();
 	end
 	
+	enabled = true
+	
+	spawn(function()
+		while wait() do
+			if enabled == false then break end
+			local e = script.Parent.text:Clone()
+			e.Parent=script.Parent
+			spawn(function() wait() e:remove() end)
+		end
+	end)
+	
 	local blur = Instance.new('BlurEffect',game:GetService('Lighting'))
 	blur.Size=0
 	tween(blur,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Size=10})
@@ -47,7 +58,7 @@ local function XXKBIYV_fake_script() -- Main.LocalScript
 	tween(blur,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Size=0})
 	tween(script.Parent.logo,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {ImageTransparency=1})
 	tween(script.Parent.text,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut), {Position=UDim2.new(0.434, 0,0.469, 0),TextStrokeTransparency=1,TextTransparency=1})
-	wait(1.26)
+	wait(1.26) enabled = false
 	blur:Remove()
 end
 coroutine.wrap(XXKBIYV_fake_script)()
